@@ -1,4 +1,3 @@
 LeagueMailer::Application.routes.draw do
-  # TODO remove index
-  resources :mails, :only => [:index, :create]
+  resources :mails, :only => :create
 end
