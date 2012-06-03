@@ -1,0 +1,9 @@
+Hey <%= @user[:name] %>,
+
+The next game for <%= @team[:name] %> is coming up. It's at <%= format_date(@game[:date]) %> at <%= @game[:location] %>.
+
+You're yet to confirm that you're playing. Jump in here to let the team know:
+<%= @team[:url] %>
+
+Awesome!
+The league team

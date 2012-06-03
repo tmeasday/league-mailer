@@ -1,8 +1,29 @@
 class Notifications < ActionMailer::Base
   default from: "us@percolatestudio.com"
   
-  def test(data)
-    @data = data
-    mail :to => 'tom@thesnail.org', :subject => "Test mail from league-mailer"
+  def signup(data)
+    @user = data[:user]
+    mail :to => "#{@user[:name]} <#{@user[:email]}>", :subject => "Welcome to League"
   end
+  
+  def season_ticket(data)
+    @user = data["user"]
+    @team = data["team"]
+    mail :to => "#{@user[:name]} <#{@user[:email]}>", :subject => "#{@team[:name]} League Season Ticket"
+  end
+  
+  def reminder(data)
+    @user = data["user"]
+    @team = data["team"]
+    @game = data["game"]
+    mail :to => "#{@user[:name]} <#{@user[:email]}>", :subject => "Upcoming game for #{@team[:name]}"
+  end
+  
+  def problem(data)
+    @user = data["user"]
+    @team = data["team"]
+    @game = data["game"]
+    mail :to => "#{@user[:name]} <#{@user[:email]}>", :subject => "Problem with upcoming game for #{@team[:name]}"
+  end
+  
 end

@@ -1,0 +1,10 @@
+Hey <%= @user[:name] %>,
+
+Just letting you know that there's a problem with your league team <%= @team[:name] %>.
+
+The next game is at <%= format_date(@game[:date]) %>, but only <%= @game[:confirmation_count] %> players have confirmed. 
+
+You better check it out: <%= @team[:url] %>.
+
+Cheers,
+The league team.
