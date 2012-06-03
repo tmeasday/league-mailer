@@ -1,4 +1,6 @@
 class MailsController < ApplicationController
+  before_filter :authenticate, :only => :create
+  
   def create
     mail = params[:mail].to_sym
     data = ActiveSupport::JSON.decode(params[:data]).with_indifferent_access
