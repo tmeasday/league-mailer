@@ -13,7 +13,10 @@ group :production do
   gem 'pg'
 end
 
+gem 'edifice'
 gem 'json'
+gem 'nokogiri'
+gem 'premailer-rails3'
 
 # Gems used only for assets and not required
 # in production environments by default.

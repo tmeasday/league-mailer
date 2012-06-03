@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= yield(:stylesheet_tags) %>
+</head>
+<body class="<%= edifice_body_classes + " #{@body_classes}" %>">
+  <%= content_for?(:base_content) ? yield(:base_content) : yield %>
+</body>
+</html>
