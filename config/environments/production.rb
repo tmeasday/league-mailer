@@ -59,4 +59,6 @@ LeagueMailer::Application.configure do
   config.active_support.deprecation = :notify
   
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { :host => ENV['HOSTNAME'] || 'league-mailer.herokuapp.com' }
+  
 end
