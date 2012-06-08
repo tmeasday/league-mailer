@@ -6,9 +6,14 @@
 	    <% end %>
 	  <% elsif verb === :view %>
 	    <%= link_to "google.com" do%>
-	      <img align="center"  src="<%=asset_path "emails/btne_view_180x40.gif"%>"  width="180" height="40" alt="Join League">
+	      <img align="center"  src="<%=asset_path "emails/btne_view_180x40.gif"%>"  width="180" height="40" alt="View Team">
 	    <% end %>
-	      
+    <% elsif verb === :create %>
+	    <%= link_to "google.com" do%>
+	      <img align="center"  src="<%=asset_path "emails/btne_create_180x40.gif"%>"  width="180" height="40" alt="Create Team">
+	    <% end %>
+	    <p class="sub">Click here to create your first team</p>
     <% end %>
 	</td>
 </tr>
+
