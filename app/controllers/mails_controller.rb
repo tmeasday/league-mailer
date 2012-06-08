@@ -33,7 +33,13 @@ protected
   end
   
   def setup_team
-    @team = {:name => "Tom's Fault", :url => 'http://foo.bar'}
+    @players = [
+      {:name => 'Tom Coleman', :facebook_id => '680541486'},
+      {:name => 'Ian Stuart', :facebook_id => '1202505'}
+    ]
+    @team = {:name => "Tom's Fault", :url => 'http://foo.bar',
+      :players => @players
+    }
   end
   
   def setup_game

@@ -10,6 +10,7 @@ class Notifications < ActionMailer::Base
   def season_ticket(data)
     @user = data[:user]
     @team = data[:team]
+    @players = data[:team][:players]
     mail :to => "#{@user[:name]} <#{@user[:email]}>", :subject => "#{@team[:name]} League Season Ticket"
   end
   
