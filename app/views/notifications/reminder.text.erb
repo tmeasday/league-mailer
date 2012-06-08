@@ -1,9 +1,6 @@
-Hey <%= @user[:name] %>,
+<%= game_introduction(@user, @game) %>
 
-The next game for <%= @team[:name] %> is coming up. It's at <%= format_date(@game[:date]) %> at <%= @game[:location] %>.
-
-You're yet to confirm that you're playing. Jump in here to let the team know:
-<%= @team[:url] %>
+<%= player_state(@game, false) %>
 
 Awesome!
 The league team

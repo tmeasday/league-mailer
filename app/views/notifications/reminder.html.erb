@@ -1,17 +1,16 @@
 <%= render :layout => 'perc_mailer/title' do %>
-  Game tomorrow &ndash; <span class="red">Players needed</span>
+  <%= game_tomorrow(@game) %> &ndash; <%= game_state(@game, true) %>
 <% end %>
 
 
 <%= render :layout => 'perc_mailer/subtitle' do %>
-  Hey <%= @user[:name] %>, you have a game tomorrow at <%= format_date(@game[:date]) %>
+  <%= game_introduction(@user, @game) %>
+<% end %>
+<%= render :layout => 'perc_mailer/message' do %>
+  <%= player_state(@game, true) %>
 <% end %>
 <%= render :layout => 'perc_mailer/error' do %>
   <span>3 more players are needed to field <strong><%= @team[:name] %></strong>.</span>
 <% end %>
-
-You are <%= @game[:state] %>. 
-
-Click <%= link_to 'here', @game[:playing_url] %> to confirm you are playing..
 
 <%= render 'perc_mailer/btn', :verb => :view %>

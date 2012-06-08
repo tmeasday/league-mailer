@@ -18,14 +18,7 @@ class Notifications < ActionMailer::Base
     @user = data[:user]
     @team = data[:team]
     @game = data[:game]
+    
     mail :to => "#{@user[:name]} <#{@user[:email]}>", :subject => "Upcoming game for #{@team[:name]}"
   end
-  
-  def problem(data)
-    @user = data[:user]
-    @team = data[:team]
-    @game = data[:game]
-    mail :to => "#{@user[:name]} <#{@user[:email]}>", :subject => "Problem with upcoming game for #{@team[:name]}"
-  end
-  
 end

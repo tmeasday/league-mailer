@@ -43,8 +43,14 @@ protected
   end
   
   def setup_game
-    @game = {:location => "Brunswick", :date => DateTime.now.to_i * 1000, :confirmation_count => 2,
-      :unregistered_count => 2, :state => 'unconfirmed',
+    @game = {:location => "Brunswick", 
+      :date => (DateTime.now + 4.hours).to_i * 1000, 
+      :tomorrow => false,
+      :player_state => 'unconfirmed',
+      :team_state => 'unconfirmed',
+      :confirmation_count => 3,
+      :playing_count => 2,
+      :player_deficit => 2, 
       :playing_url => 'foo.bar/playing', :not_playing_url => 'foo.bar/not_playing', 
       :unconfirmed_url => 'foo.bar/unconfirmed'}
   end
@@ -68,13 +74,5 @@ protected
     setup_game
     @html_template = 'notifications/reminder.html.erb'
     @mail = Notifications.reminder({user: @user, team: @team, game: @game})
-  end
-  
-  def prepare_problem
-    setup_user
-    setup_team
-    setup_game
-    @html_template = 'notifications/problem.html.erb'
-    @mail = Notifications.problem({user: @user, team: @team, game: @game})
   end
 end
