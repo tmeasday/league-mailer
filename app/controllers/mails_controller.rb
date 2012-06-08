@@ -43,7 +43,10 @@ protected
   end
   
   def setup_game
-    @game = {:location => "Brunswick", :date => DateTime.now.to_i * 1000, :confirmation_count => 2}
+    @game = {:location => "Brunswick", :date => DateTime.now.to_i * 1000, :confirmation_count => 2,
+      :unregistered_count => 2, :state => 'unconfirmed',
+      :playing_url => 'foo.bar/playing', :not_playing_url => 'foo.bar/not_playing', 
+      :unconfirmed_url => 'foo.bar/unconfirmed'}
   end
   
   def prepare_signup

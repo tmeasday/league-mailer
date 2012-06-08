@@ -10,4 +10,8 @@
   <span>3 more players are needed to field <strong><%= @team[:name] %></strong>.</span>
 <% end %>
 
+You are <%= @game[:state] %>. 
+
+Click <%= link_to 'here', @game[:playing_url] %> to confirm you are playing..
+
 <%= render 'perc_mailer/btn', :verb => :view %>
