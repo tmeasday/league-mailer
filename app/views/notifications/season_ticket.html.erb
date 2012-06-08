@@ -1,0 +1,60 @@
+<tr class="season_ticket_title">
+	<td valign="top">
+	  <table width="528px" align="center">
+	    <tbody>
+	      <tr>
+         	<td class="">
+        	  <%= image_tag 'emails/text_imge_season_ticket_420x60.gif', :size => '420x60', 
+                      :alt => "Season Ticket",  :align => 'center' %>
+        	</td>
+        </tr>
+      </tbody>
+    </table>
+	</td>
+</tr>
+
+<tr class="season_ticket">
+	<td valign="top">
+	  <table width="528px" align="center">
+	    <tbody>
+        <tr>
+          <td class="team_name">
+	          <h1>The Lions</h1>
+	        </td>
+        </tr>
+        <tr>
+          <td class="roster">
+	          <img align="center"  src=""  width="48" height="48" alt="Player">
+	          <img align="center"  src=""  width="48" height="48" alt="Player">
+	          <img align="center"  src=""  width="48" height="48" alt="Player">
+	          <img align="center"  src=""  width="48" height="48" alt="Player">
+	          <img align="center"  src=""  width="48" height="48" alt="Player">
+	          <img align="center"  src=""  width="48" height="48" alt="Player">
+	          <div>+5 more</div>
+	        </td>
+        </tr>
+        <!-- Fixme: logic that knows if you've already joined the team, or if you're receiving this because you've joined the team (change the :verb to :view) -->
+        <%= render 'perc_mailer/btn', :verb => :join %>
+	      <tr>
+	        <td class="meta" >
+	          <p>Join <strong>The Lions</strong> to stay on top of your upcoming games: confirm players, get reminders, and most importantly PLAY.</p>
+	        </td>
+        </tr>
+      </tbody>
+    </table>
+	</td>
+</tr>
+
+<tr class="season_ticket_title">
+	<td valign="top">
+	  <table width="528px" align="center">
+	    <tbody>
+	      <tr>
+         	<td class="">
+           	<p>Protip: Forward the <em>Season Ticket</em> link to teammates so they can easily join the team.</p>
+        	</td>
+        </tr>
+      </tbody>
+    </table>
+	</td>
+</tr>

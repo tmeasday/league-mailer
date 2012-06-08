@@ -1,0 +1,10 @@
+<%= render :layout => 'bindle_mailer/title' do %>
+  Bindle feedback
+<% end %>
+
+<%= render :layout => 'bindle_mailer/ni_left' do %>
+  <td class="fold2" >
+    <p class="subheader"><%= mail_to @feedback.email, @feedback.email%> says:</p>
+    <p><%= @feedback.message %></p>
+  </td>
+<% end %>

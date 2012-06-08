@@ -7,23 +7,17 @@
     <tbody>
       <tr valign="top">
         <td class="incase" valign="top" background="<%=asset_path "emails/bge_greynoise_40x40.gif"%>">
-            <%#= render 'bindle_mailer/layout/cmenu' %>
-            <%#= render 'bindle_mailer/layout/header' %>
+            <%= render 'perc_mailer/layout/header' %>
             <table id="content" cellspacing="0" border="0" cellpadding="0" align="center" width="600">
       				<tbody>
-      				  <% if @verb === :welcome %>
-      				    <%#= render 'bindle_mailer/layout/topcap_welcome' %>
-      				  <% else %>  
-        				  <%#= render 'bindle_mailer/layout/topcap', :browser_link => @browser_link %>
-      				  <% end %>
-                
-                
+      				  <%= render 'perc_mailer/layout/topcap', :browser_link => @browser_link %>
+
                 <%= content_for?(:email_content) ? yield(:email_content) : yield %>
                 
-                <%#= render 'bindle_mailer/layout/btmcap' %>
+                <%= render 'perc_mailer/layout/btmcap' %>
       				</tbody>
             </table>
-            <%#= render 'bindle_mailer/layout/footer' %>
+            <%= render 'perc_mailer/layout/footer' %>
           </td>
         </tr>
       </tbody>

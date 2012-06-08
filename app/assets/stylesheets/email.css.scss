@@ -1,0 +1,368 @@
+/*
+ *= require_self
+*/
+
+$skyblue:rgba(228, 247, 250, 1);
+
+$lblue: #0099ff;
+$mblue: #0066cc;
+$blend: #666;
+$paper: #f9f9f9;
+
+$bronze: rgba(204,153,0, .7);
+$orange: #fd8661;
+$red:#ff6600;
+$yellow: #ffffaa;
+$yellow_border: #e0e0aa;
+
+$fbhex: rgba(35,103,190, 1);
+$twhex: rgba(45, 173, 216, 1);
+$gohex: rgba(170,170,170, 1);
+$onsetcolor: #0099ff;
+
+// Base paragraph formatting 
+
+$font-size: 16;
+$line: $font-size * 1.5;
+
+$huge: $font-size + 30;
+$big: $font-size + 20;
+$h1:$font-size + 12;
+$h2:$font-size + 6;
+$h3:$font-size + 2;
+$h4: $font-size;
+$small: $font-size - 3;
+
+@mixin stdtype{
+  font-family: Tahoma, Geneva, Helvetica, sans-serif;
+}
+@mixin emtype{
+  font-family: 'Futura', "Trebuchet MS" , Arial, sans-serif;
+}
+@mixin stdfont{
+  font-size: $font-size * 1px;
+  line-height: $line * 1px;
+}
+@mixin huge($margin:no){
+  font-size: ($huge / $font-size) * 1em ;
+  line-height: ($line * 2) / $huge * 1em; 
+  @if $margin != 'no' {
+    margin-bottom: ($line * 2) / $huge * .5em;
+  }
+}
+@mixin big($margin:no){
+  font-size: ($big / $font-size) * 1em ;
+  line-height: ($line * 2) / $big * 1em; 
+  @if $margin != 'no' {
+    margin-bottom: ($line * 2) / $big * .5em;
+  }
+}
+@mixin h1($margin:no){ 
+  font-size: ($h1 / $font-size) * 1em ;
+  line-height: ($line * 2) / $h1 * 1em;
+  @if $margin != 'no' {
+    margin-bottom: ($line * 2) / $h1 * .5em;
+  }
+}
+@mixin h2($margin:no){ 
+  font-size: ($h2 / $font-size) * 1em ;
+  line-height: $line / $h2  * 1em;
+  @if $margin != 'no' {
+    margin-bottom: $line / $h2 * 1em;
+  }
+}
+@mixin h3($margin:no){ 
+  font-size: ($h3 / $font-size) * 1em ;
+  line-height: $line / $h3 * 1em;
+  @if $margin != 'no' {
+    margin-bottom: $line / $h3 * 1em;
+  }
+}
+@mixin h4($margin:no){ 
+  font-size: $h4 / $font-size * 1em;
+  line-height: $line / $h4 * 1em;
+  @if $margin != 'no' {
+    margin-bottom: $line / $font-size * 1em;
+  }
+}
+@mixin small($margin:no){
+  font-size: ($small / $font-size) * 1em ;
+  line-height: $line / $small * 1em;
+  @if $margin != 'no' {
+    margin-bottom: $line / $small * 1em;
+  }
+}
+
+body {
+  margin: 0px; 
+  padding: 0px;
+  background-color: $skyblue; 
+  background-image: image-url('emails/bge_skybluenoise_40x40.gif'); 
+  background-repeat: repeat; 
+  background-position: center top;
+  height: 100%;
+  font-size: $font-size * 1px;
+  line-height: $line  * 1px;
+  color: #333;
+  @include stdtype;
+}
+
+.incase{
+  background-color: $skyblue; 
+  background-image: image-url('emails/bge_skybluenoise_40x40.gif'); 
+  background-repeat: repeat; 
+  background-position: center top;  
+}
+
+/*Base Typography*/
+
+h1, h2, h3, h4, h5, h6, p, a, li, ul, ol, td, tr, {
+    margin: 0;
+    padding: 0;
+}
+p{margin-bottom: 1.5em}
+
+/* Headings */
+h1{ @include h1(no);}
+h2{ @include h2(no);}
+h3{ @include h3(no);}
+h4{ @include h4(no);}
+small{ @include small(no);}
+.huge { @include huge(no);}
+
+a{
+  text-decoration: none;
+  color: $lblue;
+}
+td {
+    vertical-align: top;
+}
+
+/*Hacks*/
+img{display: block;}
+.standin{background-image: image-url('emails/bge_transparent_hack_1x1.gif'); }
+.red{color: $red;}
+.author{font-weight: bold;}
+.divider{
+  td{
+    border-top: 1px solid darken($skyblue, 15%);
+    border-bottom: 1px solid lighten($skyblue, 20%);
+    height: 0px;
+    width: 600px;
+  }
+}
+#header{
+  text-align: center;
+  padding: 1.5em 0 .75em;
+  img{padding-bottom: .75em;}
+}
+#content{
+  background-color: $yellow;
+  margin-bottom: .75em;
+  .topcap{
+    >td{ 
+      padding-bottom: .75em;
+      a{
+        font-size: 10px;
+        margin-right: 5px;
+        margin-top: 5px;
+      }
+    }
+    &.welcome{
+      td{
+        padding-bottom: 0;
+        img.welcome{
+          margin-left: 5px;
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+  .btmcap{
+    td{padding-top: .75em;}
+  }
+  .title, .subtitle{
+    td{
+      padding-bottom: 20px;
+      text-align: center;
+      img{
+        display: inline;
+        margin-right: 4px;
+      }
+      h5, p{
+        margin: 0;
+        padding: 0;
+      }
+      a{
+        color: #333;
+      }
+    }
+  }
+  .threefold{
+    td >table{
+      p, a{
+        font-size: 11px;
+      }
+      .subheader{
+        font-weight: bold;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 8px;
+      }
+      .fold1, .fold2, .fold3{
+        width: 160px;
+      }
+      .fold1, .fold2{
+        padding-right: 20px;
+      }
+    }
+  }
+  .season_ticket_title{
+    td >table{
+      border: 3px solid $yellow_border;
+      td{
+        text-align: center;
+        padding: .75em 3em;
+        img{display: inline;}
+        p{
+          color: #999;
+          text-align: left;
+        }
+      }
+    }
+  }
+  .season_ticket{
+    td >table{
+      border-left: 3px solid $yellow_border;
+      border-right: 3px solid $yellow_border;
+      .team_name{
+        padding: 1.5em 0 .75em;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: .1em;
+      }
+      .roster{
+        text-align: center;
+        padding-bottom: .75em;
+        img{
+          display: inline-block;
+          margin: auto .5em;
+          background: #eee;
+        }
+        div{
+          padding-top: .75em;
+          color: #999;
+          font-weight: bold;
+          @include small;
+        }
+      }
+      .meta{
+        padding:0 3em 1.5em;
+      }
+    }
+  }
+  .message{
+    td >table{
+      margin-bottom: 1.5em;
+    }
+  }
+  .error{
+    td >table{
+      margin-bottom: 1.5em;
+      text-align: center;
+      span{
+        color: $red;
+      }
+    }
+  }
+  .note{
+    td{
+      >table{
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+        padding: 20px;
+        .avatar{
+          width: 30px;
+          height: 30px;
+          padding-top: 4px;
+          padding-right: 12px;
+        }
+      }
+    }
+  }
+  .summary{
+    td{
+      >table{
+        background: #f9f9fe;
+        border: 1px solid #ebebf1;
+        margin-bottom: 20px;
+        padding: 20px;
+        .avatar{
+          width: 30px;
+          height: 30px;
+          padding-top: 4px;
+          padding-right: 12px;
+        }
+        .guide{
+          width: 220px;
+          &.last{
+            padding-left: 40px;
+          }
+        }
+        .comment{}
+        .profile{
+          .details{
+            span{
+              margin-right:8px ;
+              img{
+                display: inline;
+                margin-right: 4px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .btn, .dblbtn{
+    td{
+      padding-bottom: 1.5em;
+      .hide{display: none;}
+      .sub{
+        padding-top: 1em;
+        @include small;
+        color: #999;
+      }
+    }
+  }
+  .dblbtn{
+    td{
+      img{
+       display:inline;
+       padding: 0 5px;
+      }
+    }
+  }
+}
+#footer{
+  text-align: center;
+  padding: 0 0 1.5em;
+  .links{
+    padding-top: .75em;
+  }
+  td{
+    span{
+      font-size: $small * 1px;
+      line-height: 1em;
+      color: #999;
+    }
+    a{
+      text-transform: uppercase;
+      font-size: 9px;
+      line-height: 1em;
+      color: #999;
+      letter-spacing: .3em;
+      padding: 0 .5em;
+    }
+  }
+}

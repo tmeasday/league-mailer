@@ -1,0 +1,19 @@
+<tr class="focus">
+	<td valign="top">
+	  <table width="520px" align="center">
+	    <tbody>
+	      <tr>
+	        <td class="avatar">
+	          <%= user_avatar_link({:user => comment.author, :routing_type => :url}, :size => 30) %>
+	        </td>
+	        <td class="comment">
+	          <p>
+	            <%= user_name_link({:user => comment.author, :routing_type => :url}, :class => 'author') %>
+	            <%= comment.text %>
+	          </p>
+	        </td>
+        </tr>
+      </tbody>
+    </table>
+	</td>
+</tr>

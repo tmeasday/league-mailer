@@ -1,0 +1,10 @@
+<tr class="topcap">
+  <td valign="top" align="right">
+	  <img align="center" src="<%=asset_path "emails/bge_topcap_600x24.gif"%>" height="24" width="600" >
+	  <% if local_assigns.has_key?(:browser_link) and not local_assigns[:browser_link].nil? %>
+	    <%= link_to 'View in browser', local_assigns[:browser_link], :align => 'right' %>
+  	<% else %>
+  	  <img align="center" src="<%=asset_path "emails/bge_transparent_hack_1x1.gif"%>" height="10" width="600" >
+  	<% end %>
+  </td>
+</tr>

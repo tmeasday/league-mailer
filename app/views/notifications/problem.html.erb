@@ -1,0 +1,13 @@
+<%= render :layout => 'perc_mailer/title' do %>
+  Game tomorrow &ndash; <span class="red">Players needed</span>
+<% end %>
+
+
+<%= render :layout => 'perc_mailer/subtitle' do %>
+  Hey <%= @user[:name] %>, you have a game tomorrow at <%= format_date(@game[:date]) %>
+<% end %>
+<%= render :layout => 'perc_mailer/error' do %>
+  <span>3 more players are needed to field <strong><%= @team[:name] %></strong>.</span>
+<% end %>
+
+<%= render 'perc_mailer/btn', :verb => :view %>

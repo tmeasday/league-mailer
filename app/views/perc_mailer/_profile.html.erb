@@ -1,0 +1,26 @@
+<tr class="focus">
+	<td valign="top">
+	  <table width="520px" align="center">
+	    <tbody>
+	      <tr>
+	        <td class="avatar">
+      	    <%= user_avatar_link({:user => user, :routing_type => :url}, :size => 30) %>
+	        </td>
+	        <td class="profile">
+            <%= user_name_link({:user => user, :routing_type => :url}, :class => 'author') %><br>
+	          <p class="details">
+              <span><img align="baseline" src="<%=asset_path "emails/icone_bindle_12x12.gif"%>" height="12" width="12" alt="Bindles:" ><%= user.bindles.count %></span>
+              <span><img align="baseline" src="<%=asset_path "emails/icone_eye_12x12.gif"%>" height="12" width="12" alt="Views:" ><%= user.bindle_view_count %></span>
+              <span><img align="baseline" src="<%=asset_path "emails/icone_bubble_12x12.gif"%>" height="12" width="12" alt="Comments:" ><%= user.comments.count %></span>
+              <span><img align="baseline" src="<%=asset_path "emails/icone_people_12x12.gif"%>" height="12" width="12" alt="Contacts:" ><%= user.contacts_count %></span>
+	          </p>
+            <% unless user.details.blank? %>
+            <p><strong>About: </strong><%= user.details %></p>
+            <% end %>
+
+	        </td>
+        </tr>
+      </tbody>
+    </table>
+	</td>
+</tr>

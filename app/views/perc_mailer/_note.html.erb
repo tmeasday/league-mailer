@@ -1,0 +1,19 @@
+<tr class="note">
+	<td valign="top">
+	  <table width="520px" align="center">
+	    <tbody>
+	      <tr>
+	        <td class="avatar">
+	          <%= user_avatar inviting_user, :size => 30 %>
+	        </td>
+	        <td class="comment">
+	          <p>
+	            <%= link_to inviting_user.email, '#', :class => 'author' %>
+	            <%= message %>
+	          </p>
+	        </td>
+        </tr>
+      </tbody>
+    </table>
+	</td>
+</tr>
