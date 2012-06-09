@@ -44,7 +44,7 @@ protected
   
   def setup_game
     @game = {:location => "Brunswick", 
-      :date => (DateTime.now + 4.hours).to_i * 1000, 
+      :date => (DateTime.now + 1.hours).to_i * 1000, 
       :tomorrow => false,
       :player_state => 'unconfirmed',
       :team_state => 'unconfirmed',

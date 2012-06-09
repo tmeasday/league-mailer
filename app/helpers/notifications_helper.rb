@@ -4,7 +4,7 @@ module NotificationsHelper
   end
   
   def format_date(ms_since_epoch)
-    to_datetime(ms_since_epoch).to_formatted_s(:long_ordinal)
+    to_datetime(ms_since_epoch).strftime('%l:%M %P').strip
   end
   
   def facebook_avatar_url(facebook_id)
@@ -12,8 +12,7 @@ module NotificationsHelper
   end
   
   def game_introduction(user, game)
-    message = "Hey #{user[:name]},
-    you have a game #{game[:tomorrow] ? 'tomorrow' : 'today'} at #{format_date(game[:date])}. "
+    message = "Hey #{user[:name]},\n   you have a game #{game[:tomorrow] ? 'tomorrow' : 'today'} at #{format_date(game[:date])}. "
     message += "It's at #{game[:location]}." if game[:location]
     message
   end
@@ -45,6 +44,18 @@ module NotificationsHelper
     end
   end
   
+  def game_error(game, html)
+    return unless game[:player_deficit] > 1
+    
+    message = "#{game[:player_deficit]} more players are needed to field"
+    
+    if html
+      "#{message} <strong>#{@team[:name]}</strong>".html_safe
+    else
+      "#{message} #{@team[:name]}."
+    end
+  end
+  
   def player_state(game, html)
     if game[:player_state].to_sym == :playing
       message = "You are confirmed playing."
@@ -59,8 +70,13 @@ module NotificationsHelper
     end
     
     if html
-      link_text = links.map {|data| link_to data[0], data[1]}.join(' | ')
-      "#{message} #{link_text}".html_safe
+      link_text = links.map do |data|
+        content_tag :li do
+          link_to data[0], data[1]
+        end
+      end.join('')
+        
+      "#{message} <ul>#{link_text}</ul>".html_safe
     else
       link_text = links.map {|data| "#{data[0]}: #{data[1]} "}.join("\n\n")
       "#{message}\n\n#{link_text}"

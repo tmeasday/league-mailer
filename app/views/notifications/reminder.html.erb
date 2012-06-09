@@ -9,8 +9,9 @@
 <%= render :layout => 'perc_mailer/message' do %>
   <%= player_state(@game, true) %>
 <% end %>
+<% error = game_error(@game, true) %>
 <%= render :layout => 'perc_mailer/error' do %>
-  <span>3 more players are needed to field <strong><%= @team[:name] %></strong>.</span>
-<% end %>
+  <span><%= error %></span>
+<% end if error %>
 
-<%= render 'perc_mailer/btn', :verb => :view %>
+<%= render 'perc_mailer/btn', :verb => :view, :team => @team %>
