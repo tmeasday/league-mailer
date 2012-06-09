@@ -11,8 +11,8 @@ module NotificationsHelper
     "https://graph.facebook.com/#{facebook_id}/picture?type=square"
   end
   
-  def game_introduction(user, game)
-    message = "Hey #{user[:name]},\n   you have a game #{game[:tomorrow] ? 'tomorrow' : 'today'} at #{format_date(game[:date])}. "
+  def game_introduction(user, team, game)
+    message = "Hey #{user[:name]},\n   you have a game with #{team[:name]} #{game[:tomorrow] ? 'tomorrow' : 'today'} at #{format_date(game[:date])}. "
     message += "It's at #{game[:location]}." if game[:location]
     message
   end

@@ -4,7 +4,7 @@
 
 
 <%= render :layout => 'perc_mailer/subtitle' do %>
-  <%= game_introduction(@user, @game) %>
+  <%= game_introduction(@user, @team, @game) %>
 <% end %>
 <%= render :layout => 'perc_mailer/message' do %>
   <%= player_state(@game, true) %>
