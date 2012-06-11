@@ -1,10 +1,10 @@
 module NotificationsHelper
-  def to_datetime(ms_since_epoch)
-    Time.at(ms_since_epoch.to_i / 1000).to_datetime
+  def to_datetime(ms_since_epoch, zone)
+    Time.at(ms_since_epoch.to_i / 1000).in_time_zone(-1 * zone.minutes).to_datetime
   end
   
-  def format_date(ms_since_epoch)
-    to_datetime(ms_since_epoch).strftime('%l:%M %P').strip
+  def format_date(ms_since_epoch, zone)
+    to_datetime(ms_since_epoch, zone).strftime('%l:%M %P').strip
   end
   
   def facebook_avatar_url(facebook_id)
@@ -12,7 +12,7 @@ module NotificationsHelper
   end
   
   def game_introduction(user, team, game)
-    message = "Hey #{user[:name]},\n   you have a game with #{team[:name]} #{game[:tomorrow] ? 'tomorrow' : 'today'} at #{format_date(game[:date])}. "
+    message = "Hey #{user[:name]},\n   you have a game with #{team[:name]} #{game[:tomorrow] ? 'tomorrow' : 'today'} at #{format_date(game[:date], game[:zone])}. "
     message += "It's at #{game[:location]}." if game[:location]
     message
   end
