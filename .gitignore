@@ -5,3 +5,5 @@ tmp/
 .sass-cache/
 bin/
 .rbenv-version
+.powenv
+vendor/.DS_Store

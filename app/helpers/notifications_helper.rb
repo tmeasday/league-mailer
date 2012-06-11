@@ -12,11 +12,35 @@ module NotificationsHelper
   end
   
   def game_introduction(user, team, game)
-    message = "Hey #{user[:name]},\n   you have a game with #{team[:name]} #{game[:tomorrow] ? 'tomorrow' : 'today'} at #{format_date(game[:date], game[:zone])}. "
-    message += "It's at #{game[:location]}." if game[:location]
+    message = "Hey #{user[:name]}, you have a game with <strong>#{team[:name]}</strong> #{game[:tomorrow] ? 'tomorrow' : 'today'}. ".html_safe
     message
   end
   
+  def game_summary(team, game, html)
+    message = "
+    <dl>
+    <dt>Team:</dt><dd>#{team[:name]}</dd>
+    <dt>Date:</dt><dd>#{game[:tomorrow] ? 'tomorrow' : 'today' }</dd>
+    <dt>Time:</dt><dd>#{format_date(@game[:date])}</dd>
+    <dt>Location:</dt><dd>#{@game[:location]}</dd>
+    <dt>Note:</dt><dd class='red'>#{game_error(@game)}</dd>
+    </dl>
+    ".html_safe
+    
+    message_plain = "
+    Team:#{team[:name]}
+    Date:#{game[:tomorrow] ? 'tomorrow' : 'today' }
+    Time:#{format_date(@game[:date])}
+    Location:#{@game[:location]}
+    Note:#{game_error(@game)}
+    "
+    if html
+      message
+    else
+      message_plain
+    end
+  end
+    
   def game_tomorrow(game)
     if game[:tomorrow]
       "Game Tomorrow"
@@ -44,16 +68,12 @@ module NotificationsHelper
     end
   end
   
-  def game_error(game, html)
+  def game_error(game)
     return unless game[:player_deficit] > 1
     
     message = "#{game[:player_deficit]} more players are needed to field"
     
-    if html
-      "#{message} <strong>#{@team[:name]}</strong>".html_safe
-    else
-      "#{message} #{@team[:name]}."
-    end
+    "#{message} this team"
   end
   
   def player_state(game, html)
@@ -64,7 +84,7 @@ module NotificationsHelper
       message = "You aren't playing."
       links = [["Click if that's incorrect"], game[:unconfirmed_url]]
     else
-      message = "You haven't confirmed if you are playing yet."
+      message = "Confirm whether you're playing by clicking on the buttons below."
       links = [["Click here if you can play", game[:playing_url]],
                ["Click here if you can't", game[:not_playing_url]]]
     end

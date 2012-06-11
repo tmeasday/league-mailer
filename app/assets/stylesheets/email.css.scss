@@ -11,7 +11,7 @@ $paper: #f9f9f9;
 
 $bronze: rgba(204,153,0, .7);
 $orange: #fd8661;
-$red:#ff6600;
+$red:#ff4400;
 $yellow: #ffffaa;
 $yellow_border: #e0e0aa;
 
@@ -183,8 +183,7 @@ img{display: block;}
   }
   .title, .subtitle{
     td{
-      padding-bottom: 20px;
-      text-align: center;
+      padding:0 3em 1.5em;
       img{
         display: inline;
         margin-right: 4px;
@@ -197,6 +196,9 @@ img{display: block;}
         color: #333;
       }
     }
+  }
+  .title, .subtitle{
+    td{text-align: center;}
   }
   .threefold{
     td >table{
@@ -265,12 +267,29 @@ img{display: block;}
       margin-bottom: 1.5em;
     }
   }
-  .error{
-    td >table{
-      margin-bottom: 1.5em;
-      text-align: center;
-      span{
-        color: $red;
+  .game_summary{
+    td{
+      >table{
+        border: 1px solid $yellow_border;
+        background-color: #f9f9f9;
+        margin-bottom: 1.5em;
+        padding: .75em;
+        dl{
+          @include small;
+          margin: 0;
+          dt{
+            float: left;
+            width: 120px;
+            margin-right: 16px;
+            font-weight: bold;
+            text-align: right;
+          }
+          dd{
+            margin: 0;
+            float: left;
+            width: 320px;
+          }
+        }
       }
     }
   }
@@ -326,8 +345,7 @@ img{display: block;}
   }
   .btn, .dblbtn{
     td{
-      padding-bottom: 1.5em;
-      .hide{display: none;}
+      padding: 0 3em 1.5em;
       .sub{
         padding-top: 1em;
         @include small;
