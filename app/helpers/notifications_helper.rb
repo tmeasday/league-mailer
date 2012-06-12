@@ -21,7 +21,7 @@ module NotificationsHelper
     <dl>
     <dt>Team:</dt><dd>#{team[:name]}</dd>
     <dt>Date:</dt><dd>#{game[:tomorrow] ? 'tomorrow' : 'today' }</dd>
-    <dt>Time:</dt><dd>#{format_date(@game[:date])}</dd>
+    <dt>Time:</dt><dd>#{format_date(@game[:date], @game[:zone])}</dd>
     <dt>Location:</dt><dd>#{@game[:location]}</dd>
     <dt>Note:</dt><dd class='red'>#{game_error(@game)}</dd>
     </dl>
@@ -30,7 +30,7 @@ module NotificationsHelper
     message_plain = "
     Team:#{team[:name]}
     Date:#{game[:tomorrow] ? 'tomorrow' : 'today' }
-    Time:#{format_date(@game[:date])}
+    Time:#{format_date(@game[:date], @game[:zone])}
     Location:#{@game[:location]}
     Note:#{game_error(@game)}
     "
