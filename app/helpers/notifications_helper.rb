@@ -78,7 +78,7 @@ module NotificationsHelper
   
   def player_state(game, html)
     if game[:player_state].to_sym == :playing
-      message = "You are confirmed playing."
+      message = "You are playing."
       links = [["Click if that's incorrect"], game[:unconfirmed_url]]
     elsif game[:player_state].to_sym == :not_playing
       message = "You aren't playing."

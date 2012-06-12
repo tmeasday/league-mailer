@@ -1,18 +1,18 @@
 <tr class="dblbtn">
 	<td valign="top" align="center">
+	 <%= yield %>
+    <p class="sup">Let your team know if you're playing by confirming below.</p>
+	  
 	  <a href="http://twitter.com/#!/BindleMe">
-  	  <img align="center" src="<%=asset_path "emails/btne_follow_152x28.gif"%>"  width="152" height="28" alt="Follow on Twitter">
+  	  <img align="center" src="<%=asset_path "emails/btne_playing_180x40.gif"%>"  width="180" height="40" alt="Click here if you're playing">
 	  </a>
-	  <a href="http://twitter.com/#!/BindleMe" class="hide">Follow on Twitter</a>
 	  
 	  <a href="http://www.facebook.com/BindleMe">
-  	  <img align="center"  src="<%=asset_path "emails/btne_like_150x28.gif"%>"  width="150" height="28" alt="Like on Facebook">
+  	  <img align="center" src="<%=asset_path "emails/btne_notplaying_180x40.gif"%>"  width="180" height="40" alt="Click here if you're not playing">
 	  </a>
-	  <a href="http://www.facebook.com/BindleMe" class="hide">Like on Facebook</a>
 	  
-	  <p class="sub">
-	    Bindle is a show and tell for gear. Create beautiful maps of your favorite things.<br>
-	    Tell your story and discover quality gear in your interests.
-	  </p>
+	  <div class="sub">
+	    We'll update your status for this game at <a href="http://www.getleague.com"> GetLeague.com</a>. <br>Click <%= link_to "here", @team[:url] %> to see a list of who&rsquo;s playing.
+	  </div>
 	</td>
 </tr>
