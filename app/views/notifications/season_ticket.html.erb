@@ -33,13 +33,12 @@
 	          <% end %>
 	        </td>
         </tr>
-        <!-- Fixme: logic that knows if you've already joined the team, or if you're receiving this because you've joined the team (change the :verb to :view) -->
-        <%= render 'perc_mailer/btn', :verb => :join, :team => @team %>
 	      <tr>
 	        <td class="meta" >
-	          <p>Join <strong><%= @team[:name] %></strong> to stay on top of your upcoming games: confirm players, get reminders, and most importantly PLAY.</p>
+	          <div>This is your season ticket for <strong><%= @team[:name] %></strong>. Join this team to stay on top of upcoming games, confirm players, and get reminders.</div>
 	        </td>
         </tr>
+        <%= render 'perc_mailer/btn', :verb => :join, :team => @team %>
       </tbody>
     </table>
 	</td>
@@ -51,7 +50,7 @@
 	    <tbody>
 	      <tr>
          	<td class="">
-           	<p>Protip: Forward the <em>Season Ticket</em> link to teammates so they can easily join the team.</p>
+           	<div class="subtext">Pro tip: Forward this email to your teammates so they can join the team as well.</div>
         	</td>
         </tr>
       </tbody>

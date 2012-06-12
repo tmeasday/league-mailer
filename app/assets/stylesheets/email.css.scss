@@ -225,9 +225,10 @@ img{display: block;}
         text-align: center;
         padding: .75em 3em;
         img{display: inline;}
-        p{
+        .subtext{
           color: #999;
           text-align: left;
+          @include small;
         }
       }
     }
@@ -264,7 +265,6 @@ img{display: block;}
   }
   .message{
     td >table{
-      margin-bottom: 1.5em;
     }
   }
   .game_summary{

@@ -1,11 +1,10 @@
 <%= render :layout => 'perc_mailer/title' do %>
-  Welcome to the League
+  Welcome to League&#44; <%= @user[:name] %>!
 <% end %>
 
 <%= render :layout => 'perc_mailer/message' do %>
- <strong>Hi <%= @user[:name] %>,</strong><br><br>
- <p>Check the status of your teams and make sure you've got the numbers for your next game at <a href="http://getleague.com">League</a>.</p>
- <p>Stay on top of your upcoming games via email to: confirm players, get reminders, and most importantly <em>PLAY</em>.</p>
+ <p>Create teams, schedule games, invite players and organize your teams all in one place with League.</p>
+ <p>We make it easier to confirm players and get reminders about upcoming games via email. Create your team below to get started.</p>
 <% end %>
 
 <%= render 'perc_mailer/btn', :verb => :create %>
