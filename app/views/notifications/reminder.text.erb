@@ -1,8 +1,17 @@
-<%= game_introduction(@user, @team, @game) %>
+<%= game_introduction(@user, @team, @game, false) %>
 
 <%= game_summary(@team, @game, false) %>
 
-<%= player_state(@game, false) %>
+<% if @game[:player_state].to_sym == :unconfirmed %>
+  Let your team know if you're playing by confirming below.
+  
+  * Click here if you are playing: <%= @game[:playing_url] %>
+  * Click here if you can't play: <%= @game[:not_playing_url] %>
+<% else%>
+  <%= player_state_message(@game[:player_state]) %>
+  
+  * Click here to change your status: <%= @game[:unconfirm_url] %>
+<% end%>
 
 Play,
 The League team

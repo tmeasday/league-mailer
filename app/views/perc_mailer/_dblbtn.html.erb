@@ -1,17 +1,21 @@
 <tr class="dblbtn">
 	<td valign="top" align="center">
-	 <%= yield %>
-    <p class="sup">Let your team know if you're playing by confirming below.</p>
+    <% if game[:player_state].to_sym == :unconfirmed %>
+      <p class="sup">Let your team know if you're playing by confirming below.</p>
+      
+  	  <%= link_to game[:playing_url] do %>
+    	  <img align="center" src="<%=asset_path "emails/btne_playing_180x40.gif"%>"  width="180" height="40" alt="Click here if you're playing">
+  	  <% end %>
+  	  
+  	  <%= link_to game[:not_playing_url] do %>
+        <img align="center" src="<%=asset_path "emails/btne_notplaying_180x40.gif"%>"  width="180" height="40" alt="Click here if you're not playing">
+      <% end %>
 	  
-	  <a href="http://twitter.com/#!/BindleMe">
-  	  <img align="center" src="<%=asset_path "emails/btne_playing_180x40.gif"%>"  width="180" height="40" alt="Click here if you're playing">
-	  </a>
-	  
-	  <a href="http://www.facebook.com/BindleMe">
-  	  <img align="center" src="<%=asset_path "emails/btne_notplaying_180x40.gif"%>"  width="180" height="40" alt="Click here if you're not playing">
-	  </a>
-	  
-	  <div class="sub">
+  	<% else %>
+  	  <p class="sup"><%= player_state_message(game[:player_state]) %> Click <%= link_to 'here', game[:unconfirmed_url]%> to change your status.</p>
+  	<% end %>
+  	
+  	<div class="sub">
 	    We'll update your status for this game at <a href="http://www.getleague.com"> GetLeague.com</a>. <br>Click <%= link_to "here", @team[:url] %> to see a list of who&rsquo;s playing.
 	  </div>
 	</td>

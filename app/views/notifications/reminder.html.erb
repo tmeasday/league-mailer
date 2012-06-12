@@ -11,6 +11,4 @@
   <%= game_summary(@team, @game, true) %>
 <% end %>
 
-<%= render :layout => 'perc_mailer/dblbtn' do %>
-  <%= player_state(@game, true) %>
-<% end %>
+<%= render 'perc_mailer/dblbtn', :game => @game %>

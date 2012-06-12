@@ -11,8 +11,10 @@ module NotificationsHelper
     "https://graph.facebook.com/#{facebook_id}/picture?type=square"
   end
   
-  def game_introduction(user, team, game)
-    message = "Hey #{user[:name]}, you have a game with <strong>#{team[:name]}</strong> #{game[:tomorrow] ? 'tomorrow' : 'today'}. ".html_safe
+  def game_introduction(user, team, game, html = true)
+    name = team[:name]
+    name = "<strong>#{name}</strong>" if html
+    message = "Hey #{user[:name]}, you have a game with #{name} #{game[:tomorrow] ? 'tomorrow' : 'today'}. ".html_safe
     message
   end
   
@@ -76,30 +78,11 @@ module NotificationsHelper
     "#{message} this team"
   end
   
-  def player_state(game, html)
-    if game[:player_state].to_sym == :playing
-      message = "You are playing."
-      links = [["Click if that's incorrect"], game[:unconfirmed_url]]
+  def player_state_message(state)
+    if state.to_sym == :playing
+      "You are playing."
     elsif game[:player_state].to_sym == :not_playing
-      message = "You aren't playing."
-      links = [["Click if that's incorrect"], game[:unconfirmed_url]]
-    else
-      message = "Confirm whether you're playing by clicking on the buttons below."
-      links = [["Click here if you can play", game[:playing_url]],
-               ["Click here if you can't", game[:not_playing_url]]]
-    end
-    
-    if html
-      link_text = links.map do |data|
-        content_tag :li do
-          link_to data[0], data[1]
-        end
-      end.join('')
-        
-      "#{message} <ul>#{link_text}</ul>".html_safe
-    else
-      link_text = links.map {|data| "#{data[0]}: #{data[1]} "}.join("\n\n")
-      "#{message}\n\n#{link_text}"
+      "You aren't playing."
     end
   end
 end
