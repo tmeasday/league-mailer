@@ -1,6 +1,6 @@
 class Notifications < ActionMailer::Base
   layout 'email'
-  default from: "us@percolatestudio.com"
+  default from: "GetLeague.com <us@percolatestudio.com>"
   
   def signup(data)
     @base_url = data[:base]
