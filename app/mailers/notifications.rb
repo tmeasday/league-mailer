@@ -3,11 +3,13 @@ class Notifications < ActionMailer::Base
   default from: "us@percolatestudio.com"
   
   def signup(data)
+    @base_url = data[:base]
     @user = data[:user]
     mail :to => "#{@user[:name]} <#{@user[:email]}>", :subject => "Welcome to League"
   end
   
   def season_ticket(data)
+    @base_url = data[:base]
     @user = data[:user]
     @team = data[:team]
     @players = data[:team][:players]
@@ -15,6 +17,7 @@ class Notifications < ActionMailer::Base
   end
   
   def reminder(data)
+    @base_url = data[:base]
     @user = data[:user]
     @team = data[:team]
     @game = data[:game]

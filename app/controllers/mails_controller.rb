@@ -10,6 +10,7 @@ class MailsController < ApplicationController
   end
   
   def show
+    @base_url = 'http://foo.bar'
     prepare_email(params[:id])
     
     PremailerRails::Hook.delivering_email(@mail)
@@ -59,14 +60,14 @@ protected
   def prepare_signup
     setup_user
     @html_template = 'notifications/signup.html.erb'
-    @mail = Notifications.signup({user: @user})
+    @mail = Notifications.signup({base: @base_url, user: @user})
   end
   
   def prepare_season_ticket
     setup_user
     setup_team
     @html_template = 'notifications/season_ticket.html.erb'
-    @mail = Notifications.season_ticket({user: @user, team: @team})
+    @mail = Notifications.season_ticket({base: @base_url, user: @user, team: @team})
   end
   
   def prepare_reminder
@@ -74,6 +75,6 @@ protected
     setup_team
     setup_game
     @html_template = 'notifications/reminder.html.erb'
-    @mail = Notifications.reminder({user: @user, team: @team, game: @game})
+    @mail = Notifications.reminder({base: @base_url, user: @user, team: @team, game: @game})
   end
 end
