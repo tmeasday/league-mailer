@@ -79,9 +79,10 @@ module NotificationsHelper
   end
   
   def player_state_message(state)
-    if state.to_sym == :playing
+    state = state.downcase.to_sym
+    if state == :playing
       "You are playing."
-    elsif game[:player_state].to_sym == :not_playing
+    elsif state == :not_playing
       "You aren't playing."
     end
   end
