@@ -71,7 +71,7 @@ module NotificationsHelper
   end
   
   def game_error(game)
-    return unless game[:player_deficit] > 1
+    return unless game[:player_deficit] > 0
     
     message = "#{game[:player_deficit]} more players are needed to field"
     
