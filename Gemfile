@@ -28,15 +28,8 @@ end
 
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
 
-# Use unicorn as the web server
-# gem 'unicorn'
+gem 'eventmachine'
+gem 'ruby-ddp-client' #, :path => '../../meteor/ruby-ddp-client'
 
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug'
-
+gem 'icalendar'
