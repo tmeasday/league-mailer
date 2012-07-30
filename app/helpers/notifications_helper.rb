@@ -3,9 +3,24 @@ module NotificationsHelper
     Time.at(ms_since_epoch.to_i / 1000).in_time_zone(-1 * zone.minutes).to_datetime
   end
   
-  def format_date(ms_since_epoch, zone)
+  def format_time(ms_since_epoch, zone)
     to_datetime(ms_since_epoch, zone).strftime('%l:%M %P').strip
   end
+  
+  def date_word(ms_since_epoch, zone, prefix = '')
+    date = to_datetime(ms_since_epoch, zone)
+    now = Time.now.in_time_zone(-1 * zone.minutes)
+    
+    
+    if date.day == now.day
+      'Today'
+    elsif date.day - now.day == 1
+      'Tomorrow'
+    else
+      prefix + ' ' + date.strftime('%A')
+    end
+  end
+  
   
   def facebook_avatar_url(facebook_id)
     "https://graph.facebook.com/#{facebook_id}/picture?type=square"
@@ -14,7 +29,7 @@ module NotificationsHelper
   def game_introduction(user, team, game, html = true)
     name = team[:name]
     name = "<strong>#{name}</strong>" if html
-    message = "Hey #{user[:name]}, you have a game with #{name} #{game[:tomorrow] ? 'tomorrow' : 'today'}. ".html_safe
+    message = "Hey #{user[:name]}, you have a game with #{name} #{date_word(game[:date], game[:zone], 'on')}. ".html_safe
     message
   end
   
@@ -22,19 +37,19 @@ module NotificationsHelper
     message = "
     <dl>
     <dt>Team:</dt><dd>#{team[:name]}</dd>
-    <dt>Date:</dt><dd>#{game[:tomorrow] ? 'tomorrow' : 'today' }</dd>
-    <dt>Time:</dt><dd>#{format_date(@game[:date], @game[:zone])}</dd>
-    <dt>Location:</dt><dd>#{@game[:location]}</dd>
-    <dt>Note:</dt><dd class='red'>#{game_error(@game)}</dd>
+    <dt>Date:</dt><dd>#{date_word(game[:date], game[:zone], 'This')}</dd>
+    <dt>Time:</dt><dd>#{format_time(game[:date], game[:zone])}</dd>
+    <dt>Location:</dt><dd>#{game[:location]}</dd>
+    <dt>Note:</dt><dd class='red'>#{game_error(game)}</dd>
     </dl>
     ".html_safe
     
     message_plain = "
     Team:#{team[:name]}
-    Date:#{game[:tomorrow] ? 'tomorrow' : 'today' }
-    Time:#{format_date(@game[:date], @game[:zone])}
-    Location:#{@game[:location]}
-    Note:#{game_error(@game)}
+    Date:#{date_word(game[:date], game[:zone], 'This')}
+    Time:#{format_time(game[:date], game[:zone])}
+    Location:#{game[:location]}
+    Note:#{game_error(game)}
     "
     if html
       message
